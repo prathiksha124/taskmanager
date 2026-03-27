@@ -32,39 +32,29 @@ function Dashboard() {
     } catch {}
   };
 
-  // ✅ LOAD TASKS
   const loadTasks = async () => {
-    try {
-      const userId = localStorage.getItem("userId");
+  try {
+    const userId = localStorage.getItem("userId");
 
-      let url = "";
+    let url = `/tasks?userId=${userId}&role=${role}`;
 
-      if (role === "ROLE_ADMIN") {
-        if (statusFilter && userFilter) {
-          url = `/tasks?status=${statusFilter}&assignedTo=${userFilter}`;
-        } else if (statusFilter) {
-          url = `/tasks?status=${statusFilter}`;
-        } else if (userFilter) {
-          url = `/tasks?assignedTo=${userFilter}`;
-        } else {
-          url = `/tasks?userId=${userId}&role=${role}`;
-        }
-      } else {
-  if (statusFilter) {
-    url = `/tasks?userId=${userId}&role=${role}&status=${statusFilter}`;
-  } else {
-    url = `/tasks?userId=${userId}&role=${role}`;
-  }
-}
-      const res = await api.get(url, auth);
-      setTasks(res.data);
-
-    } catch (err) {
-      console.log(err);
+    if (statusFilter) {
+      url += `&status=${statusFilter}`;
     }
-  };
 
-  // ✅ CREATE TASK
+    if (role === "ROLE_ADMIN" && userFilter) {
+      url += `&assignedTo=${userFilter}`;
+    }
+
+    const res = await api.get(url, auth);
+    setTasks(res.data);
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
   const createTask = async () => {
     if (!title) {
       setMessage("Title is required ❌");
@@ -105,19 +95,19 @@ function Dashboard() {
     }
   };
 
-  // ✅ UPDATE TASK
+ 
   const updateStatus = async (task, status) => {
     await api.put(`/tasks/${task.id}`, { ...task, status }, auth);
     loadTasks();
   };
 
-  // ✅ DELETE TASK
+ 
   const deleteTask = async (id) => {
     await api.delete(`/tasks/${id}`, auth);
     loadTasks();
   };
 
-  // ✅ GET USER NAME
+
   const getUserName = (id) => {
     const user = users.find((u) => u.id === id);
     return user ? user.name : "User";
@@ -134,7 +124,7 @@ function Dashboard() {
 
       <div className="container-fluid mt-4">
 
-        {/* ✅ MESSAGE (NO EMPTY BOX ISSUE) */}
+        {}
         {message && (
           <div className="d-flex justify-content-center">
             <div className={`alert ${error ? "alert-danger" : "alert-success"} w-50 text-center`}>
@@ -143,7 +133,7 @@ function Dashboard() {
           </div>
         )}
 
-        {/* 🔹 CREATE TASK */}
+        {}
         <div className="card p-3 mb-4 shadow">
           <h5>Create Task</h5>
 
@@ -189,7 +179,7 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* 🔹 FILTERS */}
+        {}
         <div className="card p-3 mb-4 shadow">
           <h5>Filters</h5>
 
@@ -230,7 +220,7 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* 🔹 TASK LIST */}
+        {}
         <div className="row px-3">
           {tasks.map((t) => (
             <div key={t.id} className="col-md-4 mb-3">
