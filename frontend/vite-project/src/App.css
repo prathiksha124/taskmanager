@@ -1,0 +1,111 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  background: #1e3a8a;
+  color: white;
+  padding: 40px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: turquoise;
+  
+}
+
+/* HOME */
+.home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.home-card {
+  background: rgba(255,255,255,0.1);
+  padding: 40px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+}
+
+/* CENTER */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* CARD */
+.card {
+  width: 100%;
+  border-radius: 10px;
+}
+/* LOGIN PAGE SAME AS HOME */
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+/* LOGIN CARD */
+.login-card {
+  width: 320px;   /* ✅ small box */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* TITLE */
+.login-title {
+  margin-bottom: 10px;
+}
+
+/* INPUT */
+.login-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+/* BUTTON */
+.login-card button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  background: white;
+  color: #2563eb;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-card button:hover {
+  transform: scale(1.05);
+}
+
+/* LINK */
+.login-card a {
+  color: #e0f2fe;
+}
