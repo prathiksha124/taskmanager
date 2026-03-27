@@ -13,7 +13,7 @@ A full-stack Task Manager application built using React, Spring Boot, and MySQL,
 - Version Control: Git & GitHub
 
 
-Features
+## Features
 
 ## User
 - Register & Login
@@ -40,7 +40,7 @@ Features
 - PUT /api/tasks/{id} → Update task
 - DELETE /api/tasks/{id} → Delete task
  ## Users (Admin only)
-GET /api/users → List all users
+- GET /api/users → List all users
 
 
 
@@ -48,20 +48,21 @@ GET /api/users → List all users
 
 ## Users Table:
 
-id (PK)
-name
-email (unique)
-password
-role (ADMIN / USER)
+- id (PK)
+- name
+- email (unique)
+- password
+- role (ADMIN / USER)
 
 ## Tasks Table:
 
-id (PK)
-title
-description
-status (TODO, IN_PROGRESS, DONE)
-assignedTo (FK)
-createdBy (FK)
+- id (PK)
+- title
+- description
+- status (TODO, IN_PROGRESS, DONE)
+- assignedTo (FK)
+- createdBy (FK)
+  ## VERIFICATION
 Step 1: Clone the repository
 
 ```bash
@@ -103,7 +104,7 @@ Push to Docker Hub
 Backend: prathiksha0326/taskmanager-backend
 Frontend: prathiksha0326/taskmanager-frontend
 
-#verification
+## verification
 Clone repository
 Run:
 docker-compose up --build
