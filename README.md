@@ -30,8 +30,38 @@ Admin
 - Filter tasks by status
 - Delete tasks
 
-
+API Design
+ Auth
+POST /api/auth/register → Register user
+POST /api/auth/login → Login
+ Tasks
+GET /api/tasks → Get tasks (filters supported)
+POST /api/tasks → Create task
+PUT /api/tasks/{id} → Update task
+DELETE /api/tasks/{id} → Delete task
+ Users (Admin only)
+GET /api/users → List all users
  Run Application (Docker)
+
+
+ Database Design (ERD)
+
+Users Table:
+
+id (PK)
+name
+email (unique)
+password
+role (ADMIN / USER)
+
+Tasks Table:
+
+id (PK)
+title
+description
+status (TODO, IN_PROGRESS, DONE)
+assignedTo (FK)
+createdBy (FK)
 Step 1: Clone the repository
 
 ```bash
