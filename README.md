@@ -1,5 +1,5 @@
 
-
+TASK MANAGER
 A full-stack Task Manager application built using React, Spring Boot, and MySQL, fully containerized using Docker and automated with CI/CD.
 
 
