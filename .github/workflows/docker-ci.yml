@@ -10,54 +10,44 @@ jobs:
 
     steps:
 
-  
     - name: Checkout code
       uses: actions/checkout@v4
 
-    #  Login Docker Hub
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    # Setup Java
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
         distribution: temurin
         java-version: '17'
 
-    # Build Backend
     - name: Build Backend
       working-directory: backend/taskmanagerbackend/taskmanagerbackend
-     run: mvn clean package -DskipTests
+      run: mvn clean package -DskipTests   # ✅ FIXED
 
-    #  Build Backend Image
     - name: Build Backend Docker Image
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/taskmanager-backend ./backend/taskmanagerbackend/taskmanagerbackend
 
-    # Push Backend Image
     - name: Push Backend Image
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/taskmanager-backend
 
-    #  Setup Node
     - name: Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: '20'
 
-    # Build Frontend
     - name: Build Frontend
       working-directory: frontend/vite-project
       run: |
         npm install
         npm run build
 
-    # Build Frontend Image
     - name: Build Frontend Docker Image
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/taskmanager-frontend ./frontend/vite-project
 
-    #  Push Frontend Image
     - name: Push Frontend Image
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/taskmanager-frontend
